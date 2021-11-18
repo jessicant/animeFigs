@@ -31,7 +31,7 @@ def checkPreowned(url):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument("--test-type")
-    options.binary_location = "/usr/bin/chromium"
+    # options.binary_location = "/snap/bin/chromium"
     wd = webdriver.Chrome(chrome_options=options)
     curPage = 1
     currentURL = url + str(curPage)
