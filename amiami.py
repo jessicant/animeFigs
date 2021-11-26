@@ -14,14 +14,14 @@ def loadWishList():
     with open ('wanted.json', 'r') as fp:
         wishlist = json.load(fp)
 
-def repeator():
+def repeator(preowned):
     while(True):
         random_wait_time = random.randrange(900, 1200)
         time.sleep(random_wait_time)
         loadWishList()
         preowned = checkPreowned("https://www.amiami.com/eng/search/list/?s_st_condition_flg=1&s_sortkey=preowned&pagecnt=")
         display(preowned)
-        clean_up(preowned)
+        preowned = clean_up(preowned)
 
 
 def checkPreowned(url):
@@ -80,9 +80,10 @@ def display(preowned):
         print("No matches")
 def clean_up(preowned):
     preowned.clear()
+    return preowned
 
 loadWishList()
 preowned = checkPreowned("https://www.amiami.com/eng/search/list/?s_st_condition_flg=1&s_sortkey=preowned&pagecnt=")
 display(preowned)
-clean_up(preowned)
-repeator()
+preowned = clean_up(preowned)
+repeator(preowned)
